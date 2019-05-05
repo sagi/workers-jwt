@@ -2,8 +2,13 @@
 
 [`@sagi.io/gcp-jwt`](https://www.npmjs.com/package/@sagi.io/gcp-jwt) helps you
 generate `JWT` from `GCP`'s service accounts. It uses the Web Crypto API under the hood.
-
 The package works with accordance to [Google's JWT Auth guide](https://developers.google.com/identity/protocols/OAuth2ServiceAccount#jwt-auth).
+
+
+[![CircleCI](https://circleci.com/gh/sagi/gcp-jwt.svg?style=svg)](https://circleci.com/gh/gcp-jwt)
+[![Coverage Status](https://coveralls.io/repos/github/sagi/gcp-jwt/badge.svg?branch=master)](https://coveralls.io/github/sagi/gcp-jwt?branch=master)
+[![MIT License](https://img.shields.io/npm/l/@sagi.io/gcp-jwt.svg?style=flat-square)](http://opensource.org/licenses/MIT)
+[![version](https://img.shields.io/npm/v/@sagi.io/gcp-jwt.svg?style=flat-square)](http://npm.im/@sagi.io/gcp-jwt)
 
 ## Installation
 
@@ -26,7 +31,7 @@ For `Firestore` the `aud` is `https://firestore.googleapis.com/google.firestore.
 
 ## Cloudflare Workers
 
-Cloudflare Workers exposes the `crypto` global for the `Web Crypto API`.
+Cloudflare Workers expose the `crypto` global for the `Web Crypto API`.
 
 ~~~js
 const jwt = require('@sagi.io/gcp-jwt')

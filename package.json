@@ -6,11 +6,17 @@
   "author": "Sagi Kedmi <git@sagi.io> (https://sagi.io)",
   "license": "MIT",
   "private": false,
+  "scripts": {
+    "test": "yarn jest",
+    "coverage": "yarn jest --coverage"
+  },
   "dependencies": {
     "base64url": "^3.0.1"
   },
   "devDependencies": {
+    "coveralls": "^3.0.3",
     "jest": "^24.8.0",
+    "jest-junit": "^6.4.0",
     "node-webcrypto-ossl": "^1.0.44",
     "prettier": "^1.17.0"
   }
