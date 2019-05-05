@@ -1,7 +1,7 @@
 # gcp-jwt
 
 [`@sagi.io/gcp-jwt`](https://www.npmjs.com/package/@sagi.io/gcp-jwt) helps you
-generate `JWT` from `GCP`'s service accounts. It uses the Web Crypto API under the hood.
+generate a `JWT` from `GCP`'s service accounts. It uses the Web Crypto API under the hood.
 The package works with accordance to [Google's JWT Auth guide](https://developers.google.com/identity/protocols/OAuth2ServiceAccount#jwt-auth).
 
 

@@ -1,6 +1,6 @@
 {
   "name": "@sagi.io/gcp-jwt",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Generate JWT (JSON Web Token) for GCP (Google Cloud Platform)",
   "main": "index.js",
   "author": "Sagi Kedmi <git@sagi.io> (https://sagi.io)",
@@ -19,5 +19,9 @@
     "jest-junit": "^6.4.0",
     "node-webcrypto-ossl": "^1.0.44",
     "prettier": "^1.17.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sagi/gcp-jwt.git"
   }
 }
