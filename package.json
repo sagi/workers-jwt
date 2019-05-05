@@ -1,6 +1,6 @@
 {
   "name": "@sagi.io/gcp-jwt",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Generate JWT (JSON Web Token) for GCP (Google Cloud Platform)",
   "main": "index.js",
   "author": "Sagi Kedmi <git@sagi.io> (https://sagi.io)",
