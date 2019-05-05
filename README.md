@@ -26,6 +26,8 @@ For `Firestore` the `aud` is `https://firestore.googleapis.com/google.firestore.
 
 ## Cloudflare Workers
 
+Cloudflare Workers exposes the `crypto` global for the `Web Crypto API`.
+
 ~~~js
 const jwt = require('@sagi.io/gcp-jwt')
 
@@ -51,16 +53,11 @@ const documentObj =  await response.json()
 
 ## Node
 
+We use the `node-webcrypto-ossl` package to imitate the `Web Crypto API` in Node.
+
 ~~~js
 const WebCrypto = require('node-webcrypto-ossl');
 const crypto = new WebCrypto();
 
-const WebCrypto = require('node-webcrypto-ossl');
-const crypto = new WebCrypto();
-
-const serviceAccountJsonStr = process.env.SERVICE_ACCOUNT_JSON_STR
-const aud = `https://firestore.googleapis.com/google.firestore.v1.Firestore`
-
-
-const aud = ''
+<... SAME AS CLOUDFLARE WORKERS ...>
 ~~~
