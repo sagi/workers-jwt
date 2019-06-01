@@ -39,12 +39,12 @@ const algorithms = {
   },
 };
 
-const getPayload = (aud, clientEmail, expiredAfter = 3600) => {
+const getPayload = (aud, clientEmail, scope = '', expiredAfter = 3600) => {
   const iat = parseInt(Date.now() / 1000);
   const exp = iat + expiredAfter;
   const iss = clientEmail;
   const sub = clientEmail;
-  return { aud, iss, sub, iat, exp };
+  return { aud, iss, sub, iat, exp, scope };
 };
 
 const getHeader = (privateKeyId, alg = 'RS256') => ({
@@ -61,7 +61,7 @@ const getEncodedMessage = (header, payload) => {
 };
 
 // https://developers.google.com/identity/protocols/OAuth2ServiceAccount#jwt-auth
-const getGCPJWT = async (serviceAccountJsonStr, aud, crypto) => {
+const getGCPJWT = async (serviceAccountJsonStr, aud, scope, crypto) => {
   const {
     projectId,
     clientEmail,
@@ -79,7 +79,7 @@ const getGCPJWT = async (serviceAccountJsonStr, aud, crypto) => {
   );
 
   const header = getHeader(privateKeyId);
-  const payload = getPayload(aud, clientEmail);
+  const payload = getPayload(aud, clientEmail, scope);
 
   const encodedMessage = getEncodedMessage(header, payload);
   const encodedMessageArrBuf = str2ab(encodedMessage);

@@ -12,7 +12,7 @@ describe('gcp-jwt', () => {
     const s = fs.readFileSync('./assets/service_account.json', {
       encoding: 'utf8',
     });
-    const token = await getGCPJWT(s, 'https://baba', crypto);
+    const token = await getGCPJWT(s, 'https://baba', '', crypto);
     expect(token).toMatchSnapshot();
   });
 });
