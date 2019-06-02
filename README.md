@@ -35,7 +35,7 @@ const getToken = async ({
 
 Where:
 
-  - **`privateKeyPEM`** is a the private key `string` in `PEM` format.
+  - **`privateKeyPEM`** is the private key `string` in `PEM` format.
   - **`payload`** is the `JSON` payload to be signed, i.e. the `{ aud, iat, exp, iss, sub, scope, ... }`.
   - **`alg`** is the signing algorithm as defined in [`RFC7518`](https://tools.ietf.org/html/rfc7518#section-3.1), currently only `RS256` is supported.
   - **`cryptoImpl`** is a `WebCrypto` `API` implementation. Cloudflare Workers support `WebCrypto` out of the box. For `Node.js` you can use [`node-webcrypto-ossl`](https://github.com/PeculiarVentures/node-webcrypto-ossl) - see examples below and in the tests.
