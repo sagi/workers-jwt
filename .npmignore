@@ -1,5 +1,6 @@
 *
 !index.js
+!/lib/*
 !package.json
 !README.md
 !LICENSE

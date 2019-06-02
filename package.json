@@ -9,6 +9,7 @@
   "private": false,
   "scripts": {
     "build": "babel --ignore '**/*.test.js' --ignore testdata src -d lib --verbose",
+    "prepublish": "yarn build",
     "coverage": "yarn build && yarn jest --coverage",
     "test": "yarn build && yarn jest"
   },
