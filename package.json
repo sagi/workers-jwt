@@ -1,6 +1,6 @@
 {
   "name": "@sagi.io/cfw-jwt",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "Generate JWTs on Cloudflare Workers using the WebCrypto API",
   "main": "index.js",
   "author": "Sagi Kedmi <git@sagi.io> (https://sagi.io)",

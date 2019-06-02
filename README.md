@@ -3,7 +3,6 @@
 [`@sagi.io/cfw-jwt`](https://www.npmjs.com/package/@sagi.io/cfw-jwt) helps you
 generate a `JWT` on Cloudflare Workers with the WebCrypto API. Helper function for GCP Service Accounts included.
 
-
 [![CircleCI](https://circleci.com/gh/sagi/cfw-jwt.svg?style=svg)](https://circleci.com/gh/cfw-jwt)
 [![Coverage Status](https://coveralls.io/repos/github/sagi/cfw-jwt/badge.svg?branch=master)](https://coveralls.io/github/sagi/cfw-jwt?branch=master)
 [![MIT License](https://img.shields.io/npm/l/@sagi.io/cfw-jwt.svg?style=flat-square)](http://opensource.org/licenses/MIT)
@@ -85,12 +84,12 @@ For `Firestore` the `aud` is `https://firestore.googleapis.com/google.firestore.
 Cloudflare Workers expose the `crypto` global for the `Web Crypto API`.
 
 ~~~js
-const jwt = require('@sagi.io/cfw-jwt')
+const { getTokenFromGCPServiceAccount } = require('@sagi.io/cfw-jwt')
 
-const serviceAccountJsonStr = await ENVIRONMENT.get('SERVICE_ACCOUNT_JSON_STR', 'text')
+const serviceAccountJSON = await ENVIRONMENT.get('SERVICE_ACCOUNT_JSON','json')
 const aud = `https://firestore.googleapis.com/google.firestore.v1.Firestore`
 
-const token = await jwt(serviceAccountJsonStr, aud, crypto)
+const token = await getTokenFromGCPServiceAccount({ serviceAccountJSON, aud} )
 
 const headers = { Authorization: `Bearer ${token}` }
 
@@ -107,13 +106,19 @@ const response = await fetch(docUrl, { headers })
 const documentObj =  await response.json()
 ~~~
 
-## Node
+## Node Usage
 
 We use the `node-webcrypto-ossl` package to imitate the `Web Crypto API` in Node.
 
 ~~~js
 const WebCrypto = require('node-webcrypto-ossl');
 const crypto = new WebCrypto();
+const { getTokenFromGCPServiceAccount } = require('@sagi.io/cfw-jwt')
+
+const serviceAccountJSON = { ... }
+const aud = `https://firestore.googleapis.com/google.firestore.v1.Firestore`
+
+const token = await getTokenFromGCPServiceAccount({ serviceAccountJSON, aud, cryptoImpl: crypto} )
 
 <... SAME AS CLOUDFLARE WORKERS ...>
 ~~~

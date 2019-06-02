@@ -84,11 +84,12 @@ describe('cfw-jwt', () => {
 
     const aud = 'https://sagi.io';
     const scope = 'bla:xyz';
+    const payloadAdditions = { scope };
 
     const token = await jwt.getTokenFromGCPServiceAccount({
       serviceAccountJSON,
       aud,
-      scope,
+      payloadAdditions,
       cryptoImpl: crypto,
     });
     expect(token).toMatchSnapshot();

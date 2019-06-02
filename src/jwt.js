@@ -77,7 +77,7 @@ export const getTokenFromGCPServiceAccount = async ({
     private_key: privateKeyPEM,
   } = serviceAccountJSON;
 
-  const headerAdditions = { kid: privateKeyId };
+  Object.assign(headerAdditions, { kid: privateKeyId });
   const header = getHeader(alg, headerAdditions);
 
   const iat = parseInt(Date.now() / 1000);
