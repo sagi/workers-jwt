@@ -1,20 +1,22 @@
-# gcp-jwt
+# cfw-jwt
 
-[`@sagi.io/gcp-jwt`](https://www.npmjs.com/package/@sagi.io/gcp-jwt) helps you
-generate a `JWT` from `GCP`'s service accounts. It uses the Web Crypto API under the hood.
-The package works with accordance to [Google's JWT Auth guide](https://developers.google.com/identity/protocols/OAuth2ServiceAccount#jwt-auth).
+[`@sagi.io/cfw-jwt`](https://www.npmjs.com/package/@sagi.io/cfw-jwt) helps you
+generate a `JWT` on Cloudflare Workers with the WebCrypto API. Helper function for GCP Service Accounts included.
 
 
-[![CircleCI](https://circleci.com/gh/sagi/gcp-jwt.svg?style=svg)](https://circleci.com/gh/gcp-jwt)
-[![Coverage Status](https://coveralls.io/repos/github/sagi/gcp-jwt/badge.svg?branch=master)](https://coveralls.io/github/sagi/gcp-jwt?branch=master)
-[![MIT License](https://img.shields.io/npm/l/@sagi.io/gcp-jwt.svg?style=flat-square)](http://opensource.org/licenses/MIT)
-[![version](https://img.shields.io/npm/v/@sagi.io/gcp-jwt.svg?style=flat-square)](http://npm.im/@sagi.io/gcp-jwt)
+[![CircleCI](https://circleci.com/gh/sagi/cfw-jwt.svg?style=svg)](https://circleci.com/gh/cfw-jwt)
+[![Coverage Status](https://coveralls.io/repos/github/sagi/cfw-jwt/badge.svg?branch=master)](https://coveralls.io/github/sagi/cfw-jwt?branch=master)
+[![MIT License](https://img.shields.io/npm/l/@sagi.io/cfw-jwt.svg?style=flat-square)](http://opensource.org/licenses/MIT)
+[![version](https://img.shields.io/npm/v/@sagi.io/cfw-jwt.svg?style=flat-square)](http://npm.im/@sagi.io/cfw-jwt)
 
 ## Installation
 
 ~~~
-$ npm i @sagi.io/gcp-jwt
+$ npm i @sagi.io/cfw-jwt
 ~~~
+
+## API
+
 
 ## Example
 
@@ -34,7 +36,7 @@ For `Firestore` the `aud` is `https://firestore.googleapis.com/google.firestore.
 Cloudflare Workers expose the `crypto` global for the `Web Crypto API`.
 
 ~~~js
-const jwt = require('@sagi.io/gcp-jwt')
+const jwt = require('@sagi.io/cfw-jwt')
 
 const serviceAccountJsonStr = await ENVIRONMENT.get('SERVICE_ACCOUNT_JSON_STR', 'text')
 const aud = `https://firestore.googleapis.com/google.firestore.v1.Firestore`

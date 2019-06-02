@@ -20,14 +20,29 @@ describe('cfw-jwt', () => {
 
     const headerAdditions = { kid: sa.private_key_id };
     const privateKeyPEM = sa.private_key;
-    const x = await jwt.getToken({
+    const token = await jwt.getToken({
       privateKeyPEM,
       payload,
       headerAdditions,
       cryptoImpl: crypto,
     });
     console.log(x);
-    //const token = await getGCPJWT(s, 'https://baba', '', crypto);
-    //expect(token).toMatchSnapshot();
+    expect(token).toMatchSnapshot();
+  });
+
+  test.only('getTokenFromGCPServiceAccount', async () => {
+    // XXX Don't worry - this service account was deleted (i.e. can't be abused).
+    const serviceAccountJSON = require('./testdata/service_account.json');
+
+    const aud = 'https://sagi.io';
+    const scope = 'bla:xyz';
+
+    const token = await jwt.getTokenFromGCPServiceAccount({
+      serviceAccountJSON,
+      aud,
+      scope,
+      cryptoImpl: crypto,
+    });
+    expect(token).toMatchSnapshot();
   });
 });

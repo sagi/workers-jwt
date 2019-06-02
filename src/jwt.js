@@ -58,23 +58,34 @@ export const getToken = async ({
   return token;
 };
 
-const getTokenFromGCPServiceAccount = async ({
+// Service Account Authoriazation without OAuth2:
+// https://developers.google.com/identity/protocols/OAuth2ServiceAccount#jwt-auth
+// Service Account Auth for OAuth2 Tokens: Choose "HTTP / REST" for:
+// https://developers.google.com/identity/protocols/OAuth2ServiceAccount
+export const getTokenFromGCPServiceAccount = async ({
   serviceAccountJSON,
   aud,
-  scope,
-  alg = 'RS256'
+  scope = '',
+  alg = 'RS256',
+  expiredAfter = 3600,
   cryptoImpl = null,
 }) => {
   const {
-    projectId,
-    clientEmail,
-    privateKeyId,
-    privateKeyPEM,
-  } = parseServiceAccount(serviceAccountJsonStr);
+    client_email: clientEmail,
+    private_key_id: privateKeyId,
+    private_key: privateKeyPEM,
+  } = serviceAccountJSON;
 
-  const header = getHeader(alg, { kid: privateKeyId });
+  const headerAdditions = { kid: privateKeyId };
+  const header = getHeader(alg, headerAdditions);
 
-  const payload = getPayload(aud, clientEmail, scope);
+  const iat = parseInt(Date.now() / 1000);
+  const exp = iat + expiredAfter;
+  const iss = clientEmail;
+  const sub = clientEmail;
+  const payload = { aud, iss, sub, iat, exp };
 
-  return token;
+  !!scope && Object.assign(payload, { scope });
+
+  return getToken({ privateKeyPEM, payload, headerAdditions, cryptoImpl });
 };
