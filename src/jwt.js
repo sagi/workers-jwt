@@ -87,5 +87,5 @@ export const getTokenFromGCPServiceAccount = async ({
 
   !!scope && Object.assign(payload, { scope });
 
-  return getToken({ privateKeyPEM, payload, headerAdditions, cryptoImpl });
+  return getToken({ privateKeyPEM, payload, alg, headerAdditions, cryptoImpl });
 };

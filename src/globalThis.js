@@ -1,4 +1,5 @@
 (function() {
+  /* istanbul ignore next */
   if (typeof globalThis === 'object') return;
   Object.defineProperty(Object.prototype, '__magic__', {
     get: function() {
