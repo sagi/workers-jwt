@@ -20,10 +20,32 @@ $ npm i @sagi.io/cfw-jwt
 We currently expose two methods: `getToken` for general purpose `JWT` generation
 and `getTokenFromGCPServiceAccount` for `JWT` generation using a `GCP` service account.
 
-### **`getToken({ privateKeyPEM, payload, alg = 'RS256', headerAdditions = {}, cryptoImpl = null })`**
+### **`getToken({ ... })`**
+
+Function definition:
+
+```js
+const getToken = async ({
+  privateKeyPEM,
+  payload,
+  alg = 'RS256',
+  cryptoImppl = null,
+  headerAdditions = {},
+}) => { ... }
+```
+
+Where:
+
+  - `privateKeyPEM` is a the private key `string` in `PEM` format.
+  - `payload` is the `JSON` payload to be signed, i.e. the `{ aud, iat, exp, iss, sub, scope, ... }`.
+  - `alg` is the signing algorithm as defined in [`RFC7518`](https://tools.ietf.org/html/rfc7518#section-3.1), currently only `RS256` is supported.
+  - `cryptoImpl` is a `WebCrypto` `API` implementation. Cloudflare Workers support `WebCrypto` out of the box. For `Node.js` you can use [`node-webcrypto-ossl`](https://github.com/PeculiarVentures/node-webcrypto-ossl) - see examples below and in the tests.
+  - `headerAdditions` is an object with keys and string values to be added to the header of the `JWT`.
 
 ### **`getTokenFromGCPServiceAccount({ ... })`**
-Definition:
+
+Function definition:
+
 ```js
 const getTokenFromGCPServiceAccount = async ({
   serviceAccountJSON,
@@ -32,7 +54,7 @@ const getTokenFromGCPServiceAccount = async ({
   expiredAfter = 3600,
   headerAdditions = {},
   payloadAdditions = {}
-})
+}) => { ... }
 ```
 
 ## Example
@@ -48,7 +70,7 @@ More info [here](https://developers.google.com/identity/protocols/OAuth2ServiceA
 
 For `Firestore` the `aud` is `https://firestore.googleapis.com/google.firestore.v1.Firestore`.
 
-## Cloudflare Workers
+## Cloudflare Workers Usage
 
 Cloudflare Workers expose the `crypto` global for the `Web Crypto API`.
 

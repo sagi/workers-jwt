@@ -21,7 +21,6 @@ export const getToken = async ({
   alg = 'RS256',
   cryptoImpl = null,
   headerAdditions = {},
-  payloadAdditions = {},
 }) => {
   const algorithm = algorithms[alg];
   if (!algorithm) {
