@@ -60,7 +60,7 @@ const getTokenFromGCPServiceAccount = async ({
 Where:
 
   - **`serviceAccountJSON`** is the service account `JSON` object .
-  - **`aud`** is the audience field in the `JWT`'s payload. e.g. `https://www.googleapis.com/oauth2/v4/toke`'.
+  - **`aud`** is the audience field in the `JWT`'s payload. e.g. `https://www.googleapis.com/oauth2/v4/token`'.
   - **`expiredAfter`** - the duration of the token's validity. Defaults to 1 hour - 3600 seconds.
   - **`payloadAdditions`** is an object with keys and string values to be added to the payload of the `JWT`. Example - `{ scope: 'https://www.googleapis.com/auth/chat.bot' }`.
   - **`alg`**, **`cryptoImpl`**, **`headerAdditions`** are defined as above.
