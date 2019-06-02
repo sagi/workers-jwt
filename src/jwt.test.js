@@ -30,7 +30,7 @@ describe('cfw-jwt', () => {
     expect(token).toMatchSnapshot();
   });
 
-  test.only('getTokenFromGCPServiceAccount', async () => {
+  test('getTokenFromGCPServiceAccount', async () => {
     // XXX Don't worry - this service account was deleted (i.e. can't be abused).
     const serviceAccountJSON = require('./testdata/service_account.json');
 
