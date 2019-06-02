@@ -36,11 +36,11 @@ const getToken = async ({
 
 Where:
 
-  - `privateKeyPEM` is a the private key `string` in `PEM` format.
-  - `payload` is the `JSON` payload to be signed, i.e. the `{ aud, iat, exp, iss, sub, scope, ... }`.
-  - `alg` is the signing algorithm as defined in [`RFC7518`](https://tools.ietf.org/html/rfc7518#section-3.1), currently only `RS256` is supported.
-  - `cryptoImpl` is a `WebCrypto` `API` implementation. Cloudflare Workers support `WebCrypto` out of the box. For `Node.js` you can use [`node-webcrypto-ossl`](https://github.com/PeculiarVentures/node-webcrypto-ossl) - see examples below and in the tests.
-  - `headerAdditions` is an object with keys and string values to be added to the header of the `JWT`.
+  - **`privateKeyPEM`** is a the private key `string` in `PEM` format.
+  - **`payload`** is the `JSON` payload to be signed, i.e. the `{ aud, iat, exp, iss, sub, scope, ... }`.
+  - **`alg`** is the signing algorithm as defined in [`RFC7518`](https://tools.ietf.org/html/rfc7518#section-3.1), currently only `RS256` is supported.
+  - **`cryptoImpl`** is a `WebCrypto` `API` implementation. Cloudflare Workers support `WebCrypto` out of the box. For `Node.js` you can use [`node-webcrypto-ossl`](https://github.com/PeculiarVentures/node-webcrypto-ossl) - see examples below and in the tests.
+  - **`headerAdditions`** is an object with keys and string values to be added to the header of the `JWT`.
 
 ### **`getTokenFromGCPServiceAccount({ ... })`**
 
@@ -49,6 +49,7 @@ Function definition:
 ```js
 const getTokenFromGCPServiceAccount = async ({
   serviceAccountJSON,
+  aud,
   alg = 'RS256',
   cryptoImppl = null,
   expiredAfter = 3600,
@@ -56,6 +57,15 @@ const getTokenFromGCPServiceAccount = async ({
   payloadAdditions = {}
 }) => { ... }
 ```
+
+Where:
+
+  - **`serviceAccountJSON`** is the service account `JSON` object .
+  - **`aud`** is the audience field in the `JWT`'s payload. e.g. `https://www.googleapis.com/oauth2/v4/toke`'.
+  - **`expiredAfter`** - the duration of the token's validity. Defaults to 1 hour - 3600 seconds.
+  - **`payloadAdditions`** is an object with keys and string values to be added to the payload of the `JWT`. Example - `{ scope: 'https://www.googleapis.com/auth/chat.bot' }`.
+  - **`alg`**, **`cryptoImpl`**, **`headerAdditions`** are defined as above.
+
 
 ## Example
 
