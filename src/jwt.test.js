@@ -26,7 +26,6 @@ describe('cfw-jwt', () => {
       headerAdditions,
       cryptoImpl: crypto,
     });
-    console.log(x);
     expect(token).toMatchSnapshot();
   });
 
