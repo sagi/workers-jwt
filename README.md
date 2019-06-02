@@ -17,6 +17,12 @@ $ npm i @sagi.io/cfw-jwt
 
 ## API
 
+We currently expose two methods: `getToken` for general purpose `JWT` generation
+and `getTokenFromGCPServiceAccount` for `JWT` generation using a `GCP` service account.
+
+### **`getToken({ privateKeyPEM, payload, alg = 'RS256', headerAdditions = {}, cryptoImpl = null })`**
+
+### **`getTokenFromGCPServiceAccount({ serviceAccountJSON, alg = 'RS256', cryptoImppl = null, expiredAfter = 3600, headerAdditions = {}, payloadAdditions = {}})`**
 
 ## Example
 

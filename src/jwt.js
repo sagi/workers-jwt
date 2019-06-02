@@ -19,8 +19,9 @@ export const getToken = async ({
   privateKeyPEM,
   payload,
   alg = 'RS256',
-  headerAdditions = {},
   cryptoImpl = null,
+  headerAdditions = {},
+  payloadAdditions = {},
 }) => {
   const algorithm = algorithms[alg];
   if (!algorithm) {
@@ -65,10 +66,11 @@ export const getToken = async ({
 export const getTokenFromGCPServiceAccount = async ({
   serviceAccountJSON,
   aud,
-  scope = '',
   alg = 'RS256',
-  expiredAfter = 3600,
   cryptoImpl = null,
+  expiredAfter = 3600,
+  headerAdditions = {},
+  payloadAdditions = {},
 }) => {
   const {
     client_email: clientEmail,
@@ -83,9 +85,7 @@ export const getTokenFromGCPServiceAccount = async ({
   const exp = iat + expiredAfter;
   const iss = clientEmail;
   const sub = clientEmail;
-  const payload = { aud, iss, sub, iat, exp };
-
-  !!scope && Object.assign(payload, { scope });
+  const payload = { aud, iss, sub, iat, exp, ...payloadAdditions };
 
   return getToken({ privateKeyPEM, payload, alg, headerAdditions, cryptoImpl });
 };
