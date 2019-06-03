@@ -1,5 +1,5 @@
 import { getEncodedMessage, getDERfromPEM, str2ab, b64encode } from './utils';
-import './globalThis';
+import '@sagi.io/globalthis';
 
 const algorithms = {
   RS256: {

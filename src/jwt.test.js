@@ -1,6 +1,6 @@
 import fs from 'fs';
 import * as jwt from './jwt';
-import './globalThis';
+import '@sagi.io/globalthis';
 import WebCrypto from 'node-webcrypto-ossl';
 
 describe('cfw-jwt', () => {
