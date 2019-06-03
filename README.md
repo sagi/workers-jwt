@@ -3,7 +3,7 @@
 [`@sagi.io/cfw-jwt`](https://www.npmjs.com/package/@sagi.io/cfw-jwt) helps you
 generate a `JWT` on Cloudflare Workers with the WebCrypto API. Helper function for GCP Service Accounts included.
 
-[![CircleCI](https://circleci.com/gh/sagi/cfw-jwt.svg?style=svg)](https://circleci.com/gh/cfw-jwt)
+[![CircleCI](https://circleci.com/gh/sagi/cfw-jwt.svg?style=svg)](https://circleci.com/gh/sagi/cfw-jwt)
 [![Coverage Status](https://coveralls.io/repos/github/sagi/cfw-jwt/badge.svg?branch=master)](https://coveralls.io/github/sagi/cfw-jwt?branch=master)
 [![MIT License](https://img.shields.io/npm/l/@sagi.io/cfw-jwt.svg?style=flat-square)](http://opensource.org/licenses/MIT)
 [![version](https://img.shields.io/npm/v/@sagi.io/cfw-jwt.svg?style=flat-square)](http://npm.im/@sagi.io/cfw-jwt)
