@@ -1,6 +1,6 @@
 {
   "name": "@sagi.io/workers-jwt",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "description": "Generate JWTs on Cloudflare Workers using the WebCrypto API",
   "author": "Sagi Kedmi <git@sagi.io> (https://sagi.io)",
   "homepage": "https://sagi.io",
@@ -9,7 +9,7 @@
   "private": false,
   "scripts": {
     "build": "babel --ignore '**/*.test.js' --ignore testdata src -d lib --verbose",
-    "prepublish": "yarn build",
+    "prepublish": "yarn build && yarn test",
     "coverage": "yarn build && yarn jest --coverage",
     "test": "yarn build && yarn jest"
   },
