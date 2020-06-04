@@ -1,17 +1,17 @@
-# cfw-jwt
+# workers-jwt
 
-[`@sagi.io/cfw-jwt`](https://www.npmjs.com/package/@sagi.io/cfw-jwt) helps you
+[`@sagi.io/workers-jwt`](https://www.npmjs.com/package/@sagi.io/workers-jwt) helps you
 generate a `JWT` on Cloudflare Workers with the WebCrypto API. Helper function for GCP Service Accounts included.
 
-[![CircleCI](https://circleci.com/gh/sagi/cfw-jwt.svg?style=svg)](https://circleci.com/gh/sagi/cfw-jwt)
-[![Coverage Status](https://coveralls.io/repos/github/sagi/cfw-jwt/badge.svg?branch=master)](https://coveralls.io/github/sagi/cfw-jwt?branch=master)
-[![MIT License](https://img.shields.io/npm/l/@sagi.io/cfw-jwt.svg?style=flat-square)](http://opensource.org/licenses/MIT)
-[![version](https://img.shields.io/npm/v/@sagi.io/cfw-jwt.svg?style=flat-square)](http://npm.im/@sagi.io/cfw-jwt)
+[![CircleCI](https://circleci.com/gh/sagi/workers-jwt.svg?style=svg)](https://circleci.com/gh/sagi/workers-jwt)
+[![Coverage Status](https://coveralls.io/repos/github/sagi/workers-jwt/badge.svg?branch=master)](https://coveralls.io/github/sagi/workers-jwt?branch=master)
+[![MIT License](https://img.shields.io/npm/l/@sagi.io/workers-jwt.svg?style=flat-square)](http://opensource.org/licenses/MIT)
+[![version](https://img.shields.io/npm/v/@sagi.io/workers-jwt.svg?style=flat-square)](http://npm.im/@sagi.io/workers-jwt)
 
 ## Installation
 
 ~~~
-$ npm i @sagi.io/cfw-jwt
+$ npm i @sagi.io/workers-jwt
 ~~~
 
 ## API
@@ -84,7 +84,7 @@ For `Firestore` the `aud` is `https://firestore.googleapis.com/google.firestore.
 Cloudflare Workers expose the `crypto` global for the `Web Crypto API`.
 
 ~~~js
-const { getTokenFromGCPServiceAccount } = require('@sagi.io/cfw-jwt')
+const { getTokenFromGCPServiceAccount } = require('@sagi.io/workers-jwt')
 
 const serviceAccountJSON = await ENVIRONMENT.get('SERVICE_ACCOUNT_JSON','json')
 const aud = `https://firestore.googleapis.com/google.firestore.v1.Firestore`
@@ -113,7 +113,7 @@ We use the `node-webcrypto-ossl` package to imitate the `Web Crypto API` in Node
 ~~~js
 const WebCrypto = require('node-webcrypto-ossl');
 const crypto = new WebCrypto();
-const { getTokenFromGCPServiceAccount } = require('@sagi.io/cfw-jwt')
+const { getTokenFromGCPServiceAccount } = require('@sagi.io/workers-jwt')
 
 const serviceAccountJSON = { ... }
 const aud = `https://firestore.googleapis.com/google.firestore.v1.Firestore`

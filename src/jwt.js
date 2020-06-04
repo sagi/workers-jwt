@@ -24,12 +24,12 @@ export const getToken = async ({
 }) => {
   const algorithm = algorithms[alg];
   if (!algorithm) {
-    throw new Error(`@sagi.io/cfw-jwt: Unsupported algorithm ${alg}.`);
+    throw new Error(`@sagi.io/workers-jwt: Unsupported algorithm ${alg}.`);
   }
 
   if (!globalThis.crypto) {
     if (!cryptoImpl) {
-      throw new Error(`@sagi.io/cfw-jwt: No crypto nor cryptoImpl were found.`);
+      throw new Error(`@sagi.io/workers-jwt: No crypto nor cryptoImpl were found.`);
     }
     globalThis.crypto = cryptoImpl;
   }
