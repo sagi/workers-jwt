@@ -3,6 +3,8 @@ import * as jwt from './jwt';
 import '@sagi.io/globalthis';
 import WebCrypto from 'node-webcrypto-ossl';
 
+globalThis.atob = b64str => new Buffer(b64str, 'base64').toString('binary');
+
 describe('workers-jwt', () => {
   const crypto = new WebCrypto();
   global.Date.now = jest.fn(() => 1530518207007);

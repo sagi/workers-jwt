@@ -1,7 +1,5 @@
 import base64url from 'base64url';
 
-export const atob = b64str => new Buffer(b64str, 'base64').toString('binary');
-
 export const str2ab = str => {
   const buf = new ArrayBuffer(str.length);
   const bufView = new Uint8Array(buf);
