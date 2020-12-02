@@ -1,12 +1,12 @@
 import fs from 'fs';
 import * as jwt from './jwt';
 import '@sagi.io/globalthis';
-import WebCrypto from 'node-webcrypto-ossl';
+import { Crypto } from 'node-webcrypto-ossl';
 
-globalThis.atob = b64str => new Buffer(b64str, 'base64').toString('binary');
+globalThis.atob = (b64str) => new Buffer(b64str, 'base64').toString('binary');
 
 describe('workers-jwt', () => {
-  const crypto = new WebCrypto();
+  const cryptoImpl = new Crypto();
   global.Date.now = jest.fn(() => 1530518207007);
 
   beforeEach(() => {
@@ -30,7 +30,7 @@ describe('workers-jwt', () => {
       privateKeyPEM,
       payload,
       headerAdditions,
-      cryptoImpl: crypto,
+      cryptoImpl,
     });
     expect(token).toMatchSnapshot();
   });
@@ -53,7 +53,7 @@ describe('workers-jwt', () => {
         privateKeyPEM,
         payload,
         headerAdditions,
-        cryptoImpl: crypto,
+        cryptoImpl,
         alg: 'ES256',
       })
     ).rejects.toThrowErrorMatchingSnapshot();
@@ -92,14 +92,14 @@ describe('workers-jwt', () => {
       serviceAccountJSON,
       aud,
       payloadAdditions,
-      cryptoImpl: crypto,
+      cryptoImpl,
     });
     expect(token).toMatchSnapshot();
 
     const token2 = await jwt.getTokenFromGCPServiceAccount({
       serviceAccountJSON,
       aud,
-      cryptoImpl: crypto,
+      cryptoImpl,
     });
     expect(token2).toMatchSnapshot();
   });
