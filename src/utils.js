@@ -1,5 +1,12 @@
+import '@sagi.io/globalthis';
+
 export const base64urlEncode = (arrayBuffer) =>
   btoa(arrayBuffer).replace(/-/g, '+').replace(/_/g, '/').replace(/=/g, '');
+
+export const atobImpl = (b64str) =>
+  new Buffer(b64str, 'base64').toString('binary');
+export const btoaImpl = (arrayBuffer) =>
+  new Buffer(arrayBuffer).toString('base64');
 
 export const str2ab = (str) => {
   const buf = new ArrayBuffer(str.length);

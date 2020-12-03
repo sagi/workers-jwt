@@ -1,10 +1,8 @@
 import fs from 'fs';
 import * as jwt from './jwt';
+import * as utils from './utils';
 import '@sagi.io/globalthis';
 import { Crypto } from 'node-webcrypto-ossl';
-
-globalThis.atob = (b64str) => new Buffer(b64str, 'base64').toString('binary');
-globalThis.btoa = (arrayBuffer) => new Buffer(arrayBuffer).toString('base64');
 
 describe('workers-jwt', () => {
   const cryptoImpl = new Crypto();

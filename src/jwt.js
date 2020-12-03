@@ -3,9 +3,12 @@ import {
   getDERfromPEM,
   str2ab,
   base64urlEncode,
+  atobImpl,
+  btoaImpl,
 } from './utils';
 import '@sagi.io/globalthis';
 
+// i.e. not running in a worker context (that is - running in Node)
 const algorithms = {
   RS256: {
     name: 'RSASSA-PKCS1-v1_5',
@@ -39,6 +42,8 @@ export const getToken = async ({
       );
     }
     globalThis.crypto = cryptoImpl;
+    globalThis.atob = atobImpl;
+    globalThis.btoa = btoaImpl;
   }
 
   const privateKeyDER = getDERfromPEM(privateKeyPEM);
