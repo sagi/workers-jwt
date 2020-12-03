@@ -4,9 +4,8 @@ export const base64urlEncode = (arrayBuffer) =>
   btoa(arrayBuffer).replace(/-/g, '+').replace(/_/g, '/').replace(/=/g, '');
 
 export const atobImpl = (b64str) =>
-  new Buffer(b64str, 'base64').toString('binary');
-export const btoaImpl = (arrayBuffer) =>
-  new Buffer(arrayBuffer).toString('base64');
+  new Buffer.from(b64str, 'base64').toString('binary');
+export const btoaImpl = (str) => new Buffer.from(str).toString('base64');
 
 export const str2ab = (str) => {
   const buf = new ArrayBuffer(str.length);
@@ -17,6 +16,9 @@ export const str2ab = (str) => {
   return buf;
 };
 
+export const ab2str = (arrayBuffer) =>
+  String.fromCharCode.apply(null, new Uint8Array(arrayBuffer));
+
 export const getDERfromPEM = (pem) => {
   const pemB64 = pem
     .trim()
@@ -26,8 +28,7 @@ export const getDERfromPEM = (pem) => {
   return str2ab(atob(pemB64));
 };
 
-export const b64encodeJSON = (obj) =>
-  base64urlEncode(str2ab(JSON.stringify(obj)));
+export const b64encodeJSON = (obj) => base64urlEncode(JSON.stringify(obj));
 
 export const getEncodedMessage = (header, payload) => {
   const encodedHeader = b64encodeJSON(header);

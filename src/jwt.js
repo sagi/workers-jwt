@@ -3,12 +3,12 @@ import {
   getDERfromPEM,
   str2ab,
   base64urlEncode,
+  ab2str,
   atobImpl,
   btoaImpl,
 } from './utils';
 import '@sagi.io/globalthis';
 
-// i.e. not running in a worker context (that is - running in Node)
 const algorithms = {
   RS256: {
     name: 'RSASSA-PKCS1-v1_5',
@@ -65,7 +65,7 @@ export const getToken = async ({
     encodedMessageArrBuf
   );
 
-  const encodedSignature = base64urlEncode(signatureArrBuf);
+  const encodedSignature = base64urlEncode(ab2str(signatureArrBuf));
   const token = `${encodedMessage}.${encodedSignature}`;
   return token;
 };
