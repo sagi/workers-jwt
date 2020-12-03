@@ -1,4 +1,9 @@
-import { getEncodedMessage, getDERfromPEM, str2ab, b64encode } from './utils';
+import {
+  getEncodedMessage,
+  getDERfromPEM,
+  str2ab,
+  base64urlEncode,
+} from './utils';
 import '@sagi.io/globalthis';
 
 const algorithms = {
@@ -29,7 +34,9 @@ export const getToken = async ({
 
   if (!globalThis.crypto) {
     if (!cryptoImpl) {
-      throw new Error(`@sagi.io/workers-jwt: No crypto nor cryptoImpl were found.`);
+      throw new Error(
+        `@sagi.io/workers-jwt: No crypto nor cryptoImpl were found.`
+      );
     }
     globalThis.crypto = cryptoImpl;
   }
@@ -53,7 +60,7 @@ export const getToken = async ({
     encodedMessageArrBuf
   );
 
-  const encodedSignature = b64encode(signatureArrBuf);
+  const encodedSignature = base64urlEncode(signatureArrBuf);
   const token = `${encodedMessage}.${encodedSignature}`;
   return token;
 };

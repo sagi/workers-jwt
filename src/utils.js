@@ -1,4 +1,5 @@
-import base64url from 'base64url';
+export const base64urlEncode = (arrayBuffer) =>
+  btoa(arrayBuffer).replace(/-/g, '+').replace(/_/g, '/').replace(/=/g, '');
 
 export const str2ab = (str) => {
   const buf = new ArrayBuffer(str.length);
@@ -19,9 +20,7 @@ export const getDERfromPEM = (pem) => {
 };
 
 export const b64encodeJSON = (obj) =>
-  base64url.encode(str2ab(JSON.stringify(obj)));
-
-export const b64encode = base64url.encode;
+  base64urlEncode(str2ab(JSON.stringify(obj)));
 
 export const getEncodedMessage = (header, payload) => {
   const encodedHeader = b64encodeJSON(header);
