@@ -1,6 +1,6 @@
 import base64url from 'base64url';
 
-export const str2ab = str => {
+export const str2ab = (str) => {
   const buf = new ArrayBuffer(str.length);
   const bufView = new Uint8Array(buf);
   for (let i = 0, strLen = str.length; i < strLen; i++) {
@@ -9,16 +9,16 @@ export const str2ab = str => {
   return buf;
 };
 
-export const getDERfromPEM = pem => {
+export const getDERfromPEM = (pem) => {
   const pemB64 = pem
     .trim()
     .split('\n')
     .slice(1, -1) // Remove the --- BEGIN / END PRIVATE KEY ---
-    .join();
+    .join('');
   return str2ab(atob(pemB64));
 };
 
-export const b64encodeJSON = obj =>
+export const b64encodeJSON = (obj) =>
   base64url.encode(str2ab(JSON.stringify(obj)));
 
 export const b64encode = base64url.encode;
