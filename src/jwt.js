@@ -2,10 +2,7 @@ import {
   getEncodedMessage,
   getDERfromPEM,
   str2ab,
-  base64urlEncode,
-  ab2str,
-  atobImpl,
-  btoaImpl,
+  arrayBufferToBase64url,
 } from './utils';
 import '@sagi.io/globalthis';
 
@@ -42,8 +39,6 @@ export const getToken = async ({
       );
     }
     globalThis.crypto = cryptoImpl;
-    globalThis.atob = atobImpl;
-    globalThis.btoa = btoaImpl;
   }
 
   const privateKeyDER = getDERfromPEM(privateKeyPEM);
@@ -64,8 +59,12 @@ export const getToken = async ({
     privateKey,
     encodedMessageArrBuf
   );
+  /*
+  const uint8 = new Uint8Array(signatureArrBuf);
+  const binaryString = String.fromCharCode.apply(null, uint8);
+  */
 
-  const encodedSignature = base64urlEncode(ab2str(signatureArrBuf));
+  const encodedSignature = arrayBufferToBase64url(signatureArrBuf);
   const token = `${encodedMessage}.${encodedSignature}`;
   return token;
 };
