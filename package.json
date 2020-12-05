@@ -14,7 +14,8 @@
     "test": "yarn build && yarn jest"
   },
   "dependencies": {
-    "@sagi.io/globalthis": "^0.0.2"
+    "@sagi.io/globalthis": "^0.0.2",
+    "js-base64": "^3.6.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.12.8",
@@ -30,5 +31,15 @@
     "type": "git",
     "url": "https://github.com/sagi/workers-jwt.git"
   },
-  "keywords": ["cloudflare", "workers", "cloudflare workers", "jwt", "gcp", "service account", "firestore", "oauth", "oauth2"]
+  "keywords": [
+    "cloudflare",
+    "workers",
+    "cloudflare workers",
+    "jwt",
+    "gcp",
+    "service account",
+    "firestore",
+    "oauth",
+    "oauth2"
+  ]
 }

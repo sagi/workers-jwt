@@ -1,10 +1,6 @@
-import {
-  getEncodedMessage,
-  getDERfromPEM,
-  str2ab,
-  arrayBufferToBase64url,
-} from './utils';
+import { getEncodedMessage, getDERfromPEM, str2ab } from './utils';
 import '@sagi.io/globalthis';
+import { Base64 } from 'js-base64';
 
 const algorithms = {
   RS256: {
@@ -64,7 +60,7 @@ export const getToken = async ({
   const binaryString = String.fromCharCode.apply(null, uint8);
   */
 
-  const encodedSignature = arrayBufferToBase64url(signatureArrBuf);
+  const encodedSignature = Base64.fromUint8Array(signatureArrBuf, true);
   const token = `${encodedMessage}.${encodedSignature}`;
   return token;
 };
