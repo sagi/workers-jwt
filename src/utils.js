@@ -16,11 +16,11 @@ export const getDERfromPEM = (pem) => {
     .split('\n')
     .slice(1, -1) // Remove the --- BEGIN / END PRIVATE KEY ---
     .join('');
-  return str2ab(atob(pemB64));
+
+  return str2ab(Base64.atob(pemB64));
 };
 
-export const b64encodeJSON = (obj) =>
-  Base64.fromUint8Array(str2ab(JSON.stringify(obj)), true);
+export const b64encodeJSON = (obj) => Base64.encode(JSON.stringify(obj), true);
 
 export const getEncodedMessage = (header, payload) => {
   const encodedHeader = b64encodeJSON(header);
