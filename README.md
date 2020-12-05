@@ -111,14 +111,14 @@ const documentObj =  await response.json()
 We use the `node-webcrypto-ossl` package to imitate the `Web Crypto API` in Node.
 
 ~~~js
-const WebCrypto = require('node-webcrypto-ossl');
-const crypto = new WebCrypto();
+const { Crytpo }= require('node-webcrypto-ossl');
+const cryptoImpl  = new WebCrypto();
 const { getTokenFromGCPServiceAccount } = require('@sagi.io/workers-jwt')
 
 const serviceAccountJSON = { ... }
 const aud = `https://firestore.googleapis.com/google.firestore.v1.Firestore`
 
-const token = await getTokenFromGCPServiceAccount({ serviceAccountJSON, aud, cryptoImpl: crypto} )
+const token = await getTokenFromGCPServiceAccount({ serviceAccountJSON, aud, cryptoImpl } )
 
 <... SAME AS CLOUDFLARE WORKERS ...>
 ~~~
