@@ -55,12 +55,8 @@ export const getToken = async ({
     privateKey,
     encodedMessageArrBuf
   );
-  /*
-  const uint8 = new Uint8Array(signatureArrBuf);
-  const binaryString = String.fromCharCode.apply(null, uint8);
-  */
-
-  const encodedSignature = Base64.fromUint8Array(signatureArrBuf, true);
+  const signatureUint8Array = new Uint8Array(signatureArrBuf);
+  const encodedSignature = Base64.fromUint8Array(signatureUint8Array, true);
   const token = `${encodedMessage}.${encodedSignature}`;
   return token;
 };
