@@ -7,6 +7,11 @@ const algorithms = {
     name: 'RSASSA-PKCS1-v1_5',
     hash: { name: 'SHA-256' },
   },
+  ES256: {
+    name: 'ECDSA',
+    namedCurve: 'P-256',
+    hash: 'SHA-256'
+  }
 };
 
 export const getHeader = (alg, headerAdditions) => ({
@@ -51,7 +56,7 @@ export const getToken = async ({
   const encodedMessageArrBuf = str2ab(encodedMessage);
 
   const signatureArrBuf = await crypto.subtle.sign(
-    algorithms.RS256.name,
+    algorithm,
     privateKey,
     encodedMessageArrBuf
   );
