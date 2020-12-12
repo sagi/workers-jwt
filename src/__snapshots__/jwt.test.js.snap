@@ -4,7 +4,7 @@ exports[`workers-jwt getToken 1`] = `"eyJraWQiOiI2ODk1ZWQ1MjdlNDI3ODYxMmM2ODNlMz
 
 exports[`workers-jwt getToken; No crypto implementation 1`] = `"@sagi.io/workers-jwt: No crypto nor cryptoImpl were found."`;
 
-exports[`workers-jwt getToken; Unsupported algorithm 1`] = `"@sagi.io/workers-jwt: Unsupported algorithm ES256."`;
+exports[`workers-jwt getToken; Unsupported algorithm 1`] = `"@sagi.io/workers-jwt: Unsupported algorithm RSA-PSS."`;
 
 exports[`workers-jwt getTokenFromGCPServiceAccount 1`] = `"eyJraWQiOiI2ODk1ZWQ1MjdlNDI3ODYxMmM2ODNlMzFlZTIwYzEwZWZjZTE0ODUxIiwiYWxnIjoiUlMyNTYiLCJ0eXAiOiJKV1QifQ.eyJhdWQiOiJodHRwczovL3NhZ2kuaW8iLCJpc3MiOiJjZnctcmVzdC1hcGktdGVzdDJAYXhhbXBsZS1wcm9qZWN0LmlhbS5nc2VydmljZWFjY291bnQuY29tIiwic3ViIjoiY2Z3LXJlc3QtYXBpLXRlc3QyQGF4YW1wbGUtcHJvamVjdC5pYW0uZ3NlcnZpY2VhY2NvdW50LmNvbSIsImlhdCI6MTUzMDUxODIwNywiZXhwIjoxNTMwNTIxODA3LCJzY29wZSI6ImJsYTp4eXoifQ.QAlhoyzrTw1s087-CwohPgdZ9KSFckeCkQJU5sVN1oA0AMKoHXopk8DQdyyqGSBSrEGfKz127Kdc4BahMpSvsOuA6rpCiT7KxOv4skPm8fVGRA2Gw6hcDWpJTBmk7XZAXTxjIHR1YGbv3g9KNC6_d4aTvr3_mOJTjlDFsvIGtuHKMGDfDxHLk3ctE1V911MfouCyJdCS73-abRyvHETLcRREg11vWUWy-5ELR2kLbfsvBcQOfthV2Oqv94kJaxeE9kV5uqR-SR-gGSmzWqFQXScHXBSDZ-3-7FYPdBEHk1LcCq71iHbmTLdl5EgJCc88N381Ad5QTpVCvXt45uA8Rg"`;
 
