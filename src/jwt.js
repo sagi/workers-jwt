@@ -2,7 +2,7 @@ import { getEncodedMessage, getDERfromPEM, str2ab } from './utils';
 import '@sagi.io/globalthis';
 import { Base64 } from 'js-base64';
 
-const algorithms = {
+export const algorithms = {
   RS256: {
     name: 'RSASSA-PKCS1-v1_5',
     hash: { name: 'SHA-256' },
@@ -10,8 +10,8 @@ const algorithms = {
   ES256: {
     name: 'ECDSA',
     namedCurve: 'P-256',
-    hash: 'SHA-256'
-  }
+    hash: { name: 'SHA-256' },
+  },
 };
 
 export const getHeader = (alg, headerAdditions) => ({

@@ -37,7 +37,7 @@ Where:
 
   - **`privateKeyPEM`** is the private key `string` in `PEM` format.
   - **`payload`** is the `JSON` payload to be signed, i.e. the `{ aud, iat, exp, iss, sub, scope, ... }`.
-  - **`alg`** is the signing algorithm as defined in [`RFC7518`](https://tools.ietf.org/html/rfc7518#section-3.1), currently only `RS256` is supported.
+  - **`alg`** is the signing algorithm as defined in [`RFC7518`](https://tools.ietf.org/html/rfc7518#section-3.1), currently only `RS256` and `ES256` are supported.
   - **`cryptoImpl`** is a `WebCrypto` `API` implementation. Cloudflare Workers support `WebCrypto` out of the box. For `Node.js` you can use [`node-webcrypto-ossl`](https://github.com/PeculiarVentures/node-webcrypto-ossl) - see examples below and in the tests.
   - **`headerAdditions`** is an object with keys and string values to be added to the header of the `JWT`.
 
@@ -112,7 +112,7 @@ We use the `node-webcrypto-ossl` package to imitate the `Web Crypto API` in Node
 
 ~~~js
 const { Crytpo }= require('node-webcrypto-ossl');
-const cryptoImpl  = new WebCrypto();
+const cryptoImpl  = new Crypto();
 const { getTokenFromGCPServiceAccount } = require('@sagi.io/workers-jwt')
 
 const serviceAccountJSON = { ... }
