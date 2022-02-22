@@ -124,7 +124,7 @@ const token = await getTokenFromGCPServiceAccount({ serviceAccountJSON, aud, cry
 ~~~
 
 
-## Node Usage (version >= 15)
+## Node Usage (version 15+)
 
 Node 15 introduces the [Web Crypto API](https://nodejs.org/api/webcrypto.html).  When using NextJS, you may need to pass in the native Node `webcrypto` lib to get both SSR and webpack to work during dev mode.
 
