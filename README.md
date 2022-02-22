@@ -106,7 +106,7 @@ const response = await fetch(docUrl, { headers })
 const documentObj =  await response.json()
 ~~~
 
-## Node Usage
+## Node Usage (version <=14)
 
 We use the `node-webcrypto-ossl` package to imitate the `Web Crypto API` in Node.
 
@@ -119,6 +119,26 @@ const serviceAccountJSON = { ... }
 const aud = `https://firestore.googleapis.com/google.firestore.v1.Firestore`
 
 const token = await getTokenFromGCPServiceAccount({ serviceAccountJSON, aud, cryptoImpl } )
+
+<... SAME AS CLOUDFLARE WORKERS ...>
+~~~
+
+
+## Node Usage (version >= 15)
+
+Node 15 introduces the [Web Crypto API](https://nodejs.org/api/webcrypto.html).  When using NextJS, you may need to pass in the native Node `webcrypto` lib to get both SSR and webpack to work during dev mode.
+
+~~~js
+const { getTokenFromGCPServiceAccount } = require('@sagi.io/workers-jwt')
+
+const serviceAccountJSON = { ... }
+const aud = 'https://firestore.googleapis.com/google.firestore.v1.Firestore';
+
+const token = await getTokenFromGCPServiceAccount({ 
+  serviceAccountJSON, 
+  aud, 
+  cryptoImpl: globalThis.crypto || require('crypto').webcrypto,
+});
 
 <... SAME AS CLOUDFLARE WORKERS ...>
 ~~~
