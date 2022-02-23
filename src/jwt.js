@@ -43,7 +43,7 @@ export const getToken = async ({
   }
 
   const privateKeyDER = getDERfromPEM(privateKeyPEM);
-  const privateKey = await crypto.subtle.importKey(
+  const privateKey = await globalThis.crypto.subtle.importKey(
     'pkcs8',
     privateKeyDER,
     algorithm,
@@ -55,7 +55,7 @@ export const getToken = async ({
   const encodedMessage = getEncodedMessage(header, payload);
   const encodedMessageArrBuf = str2ab(encodedMessage);
 
-  const signatureArrBuf = await crypto.subtle.sign(
+  const signatureArrBuf = await globalThis.crypto.subtle.sign(
     algorithm,
     privateKey,
     encodedMessageArrBuf
