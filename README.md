@@ -3,6 +3,8 @@
 [`@sagi.io/workers-jwt`](https://www.npmjs.com/package/@sagi.io/workers-jwt) helps you
 generate a `JWT` on Cloudflare Workers with the WebCrypto API. Helper function for GCP Service Accounts included.
 
+⭐ We use at **[AnonymityBot](https://anonymitybot.com/s=workers-jwt)** to efficiently access Google's REST APIs with 1 round trip.
+
 [![CircleCI](https://circleci.com/gh/sagi/workers-jwt.svg?style=svg)](https://circleci.com/gh/sagi/workers-jwt)
 [![Coverage Status](https://coveralls.io/repos/github/sagi/workers-jwt/badge.svg?branch=master)](https://coveralls.io/github/sagi/workers-jwt?branch=master)
 [![MIT License](https://img.shields.io/npm/l/@sagi.io/workers-jwt.svg?style=flat-square)](http://opensource.org/licenses/MIT)
@@ -134,9 +136,9 @@ const { getTokenFromGCPServiceAccount } = require('@sagi.io/workers-jwt')
 const serviceAccountJSON = { ... }
 const aud = 'https://firestore.googleapis.com/google.firestore.v1.Firestore';
 
-const token = await getTokenFromGCPServiceAccount({ 
-  serviceAccountJSON, 
-  aud, 
+const token = await getTokenFromGCPServiceAccount({
+  serviceAccountJSON,
+  aud,
   cryptoImpl: globalThis.crypto || require('crypto').webcrypto,
 });
 
