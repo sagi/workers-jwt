@@ -1,6 +1,6 @@
 {
   "name": "@sagi.io/workers-jwt",
-  "version": "0.0.22",
+  "version": "0.0.21",
   "description": "Generate JWTs on Cloudflare Workers using the WebCrypto API",
   "author": "Sagi Kedmi <git@sagi.io> (https://sagi.io)",
   "homepage": "https://sagi.io",

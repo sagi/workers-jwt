@@ -3,7 +3,7 @@
 [`@sagi.io/workers-jwt`](https://www.npmjs.com/package/@sagi.io/workers-jwt) helps you
 generate a `JWT` on Cloudflare Workers with the WebCrypto API. Helper function for GCP Service Accounts included.
 
-⭐ We use at **[AnonymityBot](https://anonymitybot.com/s=workers-jwt)** to efficiently access Google's REST APIs with 1 round trip.
+⭐ We use it at **[OpenSay](https://opensay.co/s=workers-jwt)** to efficiently access Google's REST APIs with 1 round trip.
 
 [![CircleCI](https://circleci.com/gh/sagi/workers-jwt.svg?style=svg)](https://circleci.com/gh/sagi/workers-jwt)
 [![Coverage Status](https://coveralls.io/repos/github/sagi/workers-jwt/badge.svg?branch=master)](https://coveralls.io/github/sagi/workers-jwt?branch=master)
