@@ -5,6 +5,8 @@
   "author": "Sagi Kedmi <git@sagi.io> (https://sagi.io)",
   "homepage": "https://sagi.io",
   "main": "index.js",
+  "type": "commonjs",
+  "types": "index.d.ts",
   "license": "MIT",
   "private": false,
   "scripts": {
