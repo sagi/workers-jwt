@@ -30,7 +30,7 @@ const getToken = async ({
   privateKeyPEM,
   payload,
   alg = 'RS256',
-  cryptoImppl = null,
+  cryptoImpl = null,
   headerAdditions = {},
 }) => { ... }
 ```
@@ -52,7 +52,7 @@ const getTokenFromGCPServiceAccount = async ({
   serviceAccountJSON,
   aud,
   alg = 'RS256',
-  cryptoImppl = null,
+  cryptoImpl = null,
   expiredAfter = 3600,
   headerAdditions = {},
   payloadAdditions = {}
