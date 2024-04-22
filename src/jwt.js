@@ -41,7 +41,7 @@ export const getToken = async ({
     globalThis.crypto = cryptoImpl;
   }
 
-  const privateKeyDER = getDERfromPEM(privateKeyPEM, alg);
+  const privateKeyDER = getDERfromPEM(privateKeyPEM);
   const privateKey = await globalThis.crypto.subtle.importKey(
     'pkcs8',
     privateKeyDER,
