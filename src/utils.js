@@ -7,13 +7,14 @@ export const str2ab = (str) => {
   for (let i = 0, strLen = str.length; i < strLen; i++) {
     bufView[i] = str.charCodeAt(i);
   }
-  return buf;
+  return bufView.buffer;
 };
 
 export const getDERfromPEM = (pem) => {
   const pemB64 = pem
     .trim()
     .split('\n')
+    .map((s) => s.trim())
     .slice(1, -1) // Remove the --- BEGIN / END PRIVATE KEY ---
     .join('');
 

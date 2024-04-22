@@ -10,7 +10,6 @@ export const algorithms = {
   ES256: {
     name: 'ECDSA',
     namedCurve: 'P-256',
-    hash: { name: 'SHA-256' },
   },
 };
 
@@ -42,7 +41,7 @@ export const getToken = async ({
     globalThis.crypto = cryptoImpl;
   }
 
-  const privateKeyDER = getDERfromPEM(privateKeyPEM);
+  const privateKeyDER = getDERfromPEM(privateKeyPEM, alg);
   const privateKey = await globalThis.crypto.subtle.importKey(
     'pkcs8',
     privateKeyDER,
@@ -86,7 +85,6 @@ export const getTokenFromGCPServiceAccount = async ({
   } = serviceAccountJSON;
 
   Object.assign(headerAdditions, { kid: privateKeyId });
-  const header = getHeader(alg, headerAdditions);
 
   const iat = parseInt(Date.now() / 1000);
   const exp = iat + expiredAfter;
