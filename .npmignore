@@ -1,5 +1,5 @@
 *
-!index.js
+!/index.*
 !/lib/*
 !package.json
 !README.md
