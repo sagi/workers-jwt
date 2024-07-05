@@ -3,7 +3,7 @@
 [`@sagi.io/workers-jwt`](https://www.npmjs.com/package/@sagi.io/workers-jwt) helps you
 generate a `JWT` on Cloudflare Workers with the WebCrypto API. Helper function for GCP Service Accounts included.
 
-⭐ We use it at **[OpenSay](https://opensay.co/s=workers-jwt)** to efficiently access Google's REST APIs with 1 round trip.
+⭐ We use it at **[OpenSay](https://opensay.co/?s=workers-jwt)** to efficiently access Google's REST APIs with 1 round trip.
 
 [![CircleCI](https://circleci.com/gh/sagi/workers-jwt.svg?style=svg)](https://circleci.com/gh/sagi/workers-jwt)
 [![Coverage Status](https://coveralls.io/repos/github/sagi/workers-jwt/badge.svg?branch=master)](https://coveralls.io/github/sagi/workers-jwt?branch=master)
@@ -40,7 +40,7 @@ Where:
   - **`privateKeyPEM`** is the private key `string` in `PEM` format.
   - **`payload`** is the `JSON` payload to be signed, i.e. the `{ aud, iat, exp, iss, sub, scope, ... }`.
   - **`alg`** is the signing algorithm as defined in [`RFC7518`](https://tools.ietf.org/html/rfc7518#section-3.1), currently only `RS256` and `ES256` are supported.
-  - **`cryptoImpl`** is a `WebCrypto` `API` implementation. Cloudflare Workers support `WebCrypto` out of the box. For `Node.js` you can use [`require('crypto').webcrypto`](https://github.com/PeculiarVentures/node-webcrypto-ossl) - see examples below and in the tests.
+  - **`cryptoImpl`** is a `WebCrypto` `API` implementation. Cloudflare Workers support `WebCrypto` out of the box. For `Node.js` you can use [`require('crypto').webcrypto` - see examples below and in the tests.
   - **`headerAdditions`** is an object with keys and string values to be added to the header of the `JWT`.
 
 ### **`getTokenFromGCPServiceAccount({ ... })`**
